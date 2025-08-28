@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентация по курсовой работе</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; display: flex; flex-direction: column; align-items: center; }
+        .slide { 
+            width: 90%; 
+            max-width: 900px;
+            min-height: 500px; 
+            margin: 20px auto; 
+            padding: 25px; 
+            border: 1px solid #ccc; 
+            background-color: white; 
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Вертикальное центрирование */
+            align-items: center; /* Горизонтальное центрирование */
+            text-align: center;
+            page-break-after: always; /* Для печати каждого слайда на новой странице */
+            position: relative;
+        }
+        .slide:last-child {
+            page-break-after: avoid;
+        }
+        .slide h1 { font-size: 2em; color: #00529b; margin-bottom: 20px; } /* Основной синий цвет университета */
+        .slide h2 { font-size: 1.6em; color: #003366; margin-bottom: 15px; margin-top:10px;} /* Темно-синий */
+        .slide h3 { font-size: 1.3em; color: #0068b3; margin-bottom: 10px;} /* Светло-синий */
+        .slide p { color: #333; line-height: 1.6; font-size: 1em; margin-bottom:10px; max-width: 80%; }
+        .slide ul, .slide ol { list-style-position: inside; text-align: left; display: inline-block; margin-top: 0; padding-left: 20px;}
+        .slide li { margin-bottom: 8px; }
+        .slide img { max-width: 80%; max-height: 300px; border-radius: 5px; margin-top: 15px; }
+        .explanation { font-size: 0.9em; color: #555; margin-top: 5px; font-style: italic; }
+        .code-example { 
+            background-color: #f5f5f5; 
+            padding: 10px; 
+            border-radius: 5px; 
+            font-family: 'Courier New', Courier, monospace;
+            text-align: left;
+            font-size: 0.85em;
+            margin-top: 10px;
+            white-space: pre-wrap; /* Перенос строк в коде */
+            word-wrap: break-word; /* Перенос длинных слов */
+            max-width: 90%;
+            overflow-x: auto; /* Горизонтальная прокрутка для очень длинных строк */
+        }
+        .flex-container { display: flex; justify-content: space-around; align-items: flex-start; width: 100%; margin-top: 15px;}
+        .flex-item { flex-basis: 48%; }
+        .navigation { margin-top: 30px; font-size: 0.9em; }
+        .navigation a { margin: 0 10px; text-decoration: none; color: #0068b3; }
+        hr { border: none; height: 2px; background-color: #00529b; }
+        table { border-collapse: collapse; margin: 15px auto; }
+        th { background-color: #003366; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #e6f2ff; }
+        .university-logo { 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            width: 100px; 
+            height: auto;
+        }
+        #slide1 { 
+            background: linear-gradient(to bottom, white, #e6f2ff);
+            border-top: 4px solid #00529b;
+        }
+        .column-layout {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin-top: 15px;
+        }
+        .column {
+            flex-basis: 48%;
+            text-align: left;
+        }
+        .image-placeholder {
+            background-color: #f2f2f2;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide" id="slide1">
+        <div class="university-logo">
+            <!-- Здесь будет логотип университета -->
+        </div>
+        <h1>Применение методов машинного обучения для выявления крупномасштабных структур Вселенной на графах галактического распределения</h1>
+        <p>Курсовая работа по дисциплине "Технологии анализа данных и машинное обучение"</p>
+        <hr style="width:50%; margin-top:20px; margin-bottom:20px;">
+        <p>Выполнил(а): Макеева Маргарита Павловна, группа ЗБ-ПИ21-2</p>
+        <p>Научный руководитель: Солохов Тимур Дамирович</p>
+        <p>Москва – 2025</p>
+    </div>
+
+    <div class="slide" id="slide9_spectral">
+        <h2>Другой Взгляд: Спектральная Кластеризация</h2>
+        <h3>Как работает Спектральная кластеризация?</h3>
+        <p>Этот метод использует особенности связей между объектами, а не просто их позиции в пространстве. Это отлично подходит для графов!</p>
+        <ol>
+            <li>Анализирует структуру связей в графе (используя математические свойства матрицы смежности).</li>
+            <li>Преобразует данные в новое пространство, где кластеры лучше разделены.</li>
+            <li>Применяет стандартную кластеризацию в этом новом пространстве.</li>
+        </ol>
+        
+        <h3>Наши результаты:</h3>
+        <ul>
+            <li>Мы провели подбор оптимального числа кластеров (от 8 до 16) и выяснили, что <strong>8 кластеров</strong> дают наилучшие результаты.</li>
+            <li>Время выполнения: <strong>~6.66 секунд</strong> (медленнее, чем DBSCAN).</li>
+            <li>Как и DBSCAN, выделил один большой кластер (7930 галактик), но лучше справился с разделением остальных структур.</li>
+            <li>344 галактики (~3.5%) получили метку "-2" - это объекты, которые не уверенно относятся к какому-либо из 8 основных кластеров.</li>
+        </ul>
+        
+        <h3>Метрики качества:</h3>
+        <ul>
+            <li>Silhouette Score: <strong>0.466</strong> (лучше, чем у DBSCAN)</li>
+            <li>Davies-Bouldin Index: <strong>0.859</strong> (намного лучше, чем у DBSCAN)</li>
+        </ul>
+        <p class="explanation">Спектральная кластеризация показала лучшие метрики качества среди всех исследованных методов.</p>
+        <img src="images/dbscan_vs_spectral_comparison.png" alt="3D Визуализация спектральных кластеров" style="max-width: 90%; max-height: 350px;">
+    </div>
+
+    <div class="slide" id="slide10_agglomerative">
+        <h2>Еще Один Метод: Иерархическая Агломеративная Кластеризация</h2>
+        <h3>Принцип работы:</h3>
+        <p>Этот метод объединяет объекты "снизу-вверх", постепенно формируя более крупные кластеры:</p>
+        <ol>
+            <li>Сначала каждая галактика — отдельный кластер.</li>
+            <li>Затем находим и объединяем два ближайших кластера.</li>
+            <li>Повторяем, пока не получим нужное количество кластеров.</li>
+        </ol>
+        <p>Мы использовали метод Ward для определения "близости" кластеров, который минимизирует дисперсию внутри кластеров.</p>
+        
+        <h3>Результаты для наших данных:</h3>
+        <ul>
+            <li>Для сравнимости с Спектральной кластеризацией, мы также установили <strong>8 кластеров</strong>.</li>
+            <li>Время выполнения: <strong>~1.35 секунд</strong> (в 5 раз быстрее Спектральной, но медленнее DBSCAN).</li>
+            <li>Распределение галактик между кластерами более равномерное: Кластер 0: 2307, Кластер 2: 1942, и т.д.</li>
+        </ul>
+        
+        <h3>Метрики качества:</h3>
+        <ul>
+            <li>Silhouette Score: <strong>0.357</strong> (близко к DBSCAN)</li>
+            <li>Davies-Bouldin Index: <strong>0.905</strong> (почти так же хорошо, как Спектральная)</li>
+        </ul>
+        <p class="explanation">Этот метод дает хороший баланс между вычислительной эффективностью и качеством кластеризации.</p>
+        <p class="explanation">Для интерактивной 3D визуализации результатов кластеризации смотрите файл <a href="Презентация & Требуемое оформление/agglomerative_clusters_3d.html" target="_blank">agglomerative_clusters_3d.html</a></p>
+    </div>
+    
+    <div class="slide" id="slide11_comparison">
+        <h2>Сравнение Методов Кластеризации</h2>
+        <p>Сводная таблица результатов для трех методов:</p>
+        <table style="width:90%; margin:auto; border-collapse:collapse; text-align:center;">
+            <tr style="background-color:#f2f2f2;">
+                <th style="border:1px solid #ddd; padding:8px;">Метод</th>
+                <th style="border:1px solid #ddd; padding:8px;">Silhouette Score</th>
+                <th style="border:1px solid #ddd; padding:8px;">Davies-Bouldin Index</th>
+                <th style="border:1px solid #ddd; padding:8px;">Время (сек)</th>
+                <th style="border:1px solid #ddd; padding:8px;">Кластеры</th>
+                <th style="border:1px solid #ddd; padding:8px;">Особенности</th>
+            </tr>
+            <tr>
+                <td style="border:1px solid #ddd; padding:8px;">DBSCAN</td>
+                <td style="border:1px solid #ddd; padding:8px;">0.362</td>
+                <td style="border:1px solid #ddd; padding:8px;">1.672</td>
+                <td style="border:1px solid #ddd; padding:8px;">0.12</td>
+                <td style="border:1px solid #ddd; padding:8px;">12</td>
+                <td style="border:1px solid #ddd; padding:8px;">2.1% шума, быстрый</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #ddd; padding:8px;">Спектральная</td>
+                <td style="border:1px solid #ddd; padding:8px;"><strong>0.466</strong></td>
+                <td style="border:1px solid #ddd; padding:8px;"><strong>0.859</strong></td>
+                <td style="border:1px solid #ddd; padding:8px;">6.66</td>
+                <td style="border:1px solid #ddd; padding:8px;">8</td>
+                <td style="border:1px solid #ddd; padding:8px;">3.5% объектов с меткой -2</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #ddd; padding:8px;">Агломеративная</td>
+                <td style="border:1px solid #ddd; padding:8px;">0.357</td>
+                <td style="border:1px solid #ddd; padding:8px;">0.905</td>
+                <td style="border:1px solid #ddd; padding:8px;">1.35</td>
+                <td style="border:1px solid #ddd; padding:8px;">8</td>
+                <td style="border:1px solid #ddd; padding:8px;">Равномернее распределение</td>
+            </tr>
+        </table>
+        
+        <h3>Визуальное сравнение метрик:</h3>
+        <img src="images/metrics_comparison_plot.png" alt="Сравнение метрик качества кластеризации" style="max-width: 80%; max-height: 250px;">
+        
+        <h3>Выводы по сравнению:</h3>
+        <ul>
+            <li><strong>Лучшие метрики:</strong> Спектральная кластеризация</li>
+            <li><strong>Самый быстрый:</strong> DBSCAN</li>
+            <li><strong>Золотая середина:</strong> Агломеративная кластеризация (хорошие метрики при разумном времени выполнения)</li>
+        </ul>
+        <p>Выбор метода зависит от задачи: нужна ли максимальная точность или скорость обработки.</p>
+    </div>
+
+    <div class="slide" id="slide12_hyperparams">
+        <h2>Эксперименты с параметрами DBSCAN:</h2>
+        <p>Мы варьировали параметр <code>eps</code> (радиус для поиска соседей) при фиксированном <code>min_samples=10</code>:</p>
+        <ul>
+            <li><code>eps=0.015</code>: 21 кластер, Silhouette=0.206, Davies-Bouldin=2.433, 9.45% шума</li>
+            <li><code>eps=0.02</code>: 12 кластеров, Silhouette=0.362, Davies-Bouldin=1.672, 2.09% шума</li>
+            <li><code>eps=0.025</code>: всего 2 кластера, <strong>Silhouette=0.485, Davies-Bouldin=0.981</strong>, 0.16% шума</li>
+            <li><code>eps=0.03</code>: практически все точки слились в один кластер</li>
+        </ul>
+        <p>При <code>eps=0.025</code> DBSCAN даже превзошел Спектральную кластеризацию по метрикам, но образовал всего 2 кластера!</p>
+
+        <h3>Подбор оптимального числа кластеров для Спектральной кластеризации:</h3>
+        <p>Мы проверили параметр <code>n_clusters</code> от 8 до 16 и выяснили, что <strong>8 кластеров</strong> дают наилучшие результаты:</p>
+        <ul>
+            <li>Максимальный Silhouette Score: 0.466</li>
+            <li>Минимальный Davies-Bouldin Index: 0.859</li>
+        </ul>
+        <p class="explanation">Правильный выбор гиперпараметров критически важен для качества кластеризации.</p>
+    </div>
+    
+    <div class="slide" id="slide13_conclusions">
+        <h2>Основные Выводы</h2>
+        <h3>Что удалось сделать:</h3>
+        <ol>
+            <li>Мы успешно обработали каталог из 10067 галактик из обзора SDSS.</li>
+            <li>Построили граф галактического распределения, содержащий 975991 связь между галактиками.</li>
+            <li>Определили, что основная структура вселенной (Наибольшая Компонента Связности) содержит 96.6% галактик из нашей выборки.</li>
+            <li>Применили и сравнили три метода кластеризации для выявления структур в этом графе.</li>
+            <li>Определили, что Спектральная кластеризация дает наилучшие формальные результаты (Silhouette=0.466, Davies-Bouldin=0.859).</li>
+            <li>Обнаружили, что при правильном подборе параметров DBSCAN может давать сопоставимые или даже лучшие результаты, но с меньшим числом выделяемых структур.</li>
+        </ol>
+        
+        <h3>Главное достижение:</h3>
+        <p>Разработана и протестирована система, которая позволяет автоматически выявлять крупномасштабные структуры во Вселенной на основе данных о пространственном распределении галактик.</p>
+        <p>Цель работы успешно достигнута!</p>
+    </div>
+
+    <div class="slide" id="slide14_future">
+        <h2>Ограничения и Перспективы</h2>
+        <h3>Ограничения текущего подхода:</h3>
+        <ul>
+            <li>Мы использовали упрощенную модель для преобразования красного смещения в расстояние, без учета космологических параметров.</li>
+            <li>Относительно небольшая выборка (10067 галактик) по сравнению с полными каталогами SDSS.</li>
+            <li>Не проводилась физическая интерпретация найденных структур и сопоставление с известными космологическими объектами.</li>
+            <li>Использовался только один фиксированный параметр радиуса связи (<code>r_link</code>) при построении графа.</li>
+        </ul>
+        
+        <h3>Перспективы развития:</h3>
+        <ul>
+            <li>Использование более точных космологических формул для вычисления расстояний.</li>
+            <li>Применение методов к большим каталогам (полный SDSS, DES, будущий Euclid).</li>
+            <li>Использование других алгоритмов кластеризации и поиска сообществ на графах.</li>
+            <li>Многомасштабный анализ: построение графов с различными <code>r_link</code> для выявления структур разного масштаба.</li>
+            <li>Физическая интерпретация найденных кластеров с привлечением астрофизических данных.</li>
+            <li>Использование данных о свойствах галактик (светимость, масса) для улучшения кластеризации.</li>
+        </ul>
+    </div>
+
+    <div class="slide" id="slide15_thanks">
+        <h2>Спасибо за внимание!</h2>
+        <hr style="width:50%; margin-top:20px; margin-bottom:20px;">
+        <p>Ссылка на Jupyter Notebook и репозиторий:<br> 
+        <a href="github.com/Margarita215729/cosmic-web-clustering">github.com/Margarita215729/cosmic-web-clustering</a></p>
+        <p style="margin-top: 20px; font-size: 0.9em;">Контактная информация:<br>
+        Email: 215729@edu.fa.ru</p>
+    </div>
+
+    <div class="slide" id="slide8_viz_dbscan">
+        <h2>Визуализация Кластеров DBSCAN</h2>
+        <p>DBSCAN разделил галактики на 12 кластеров, но один из них (голубой) содержит большинство галактик. Серым отмечены "шумовые" точки, не отнесенные ни к одному кластеру.</p>
+        <img src="images/dbscan_vs_spectral_comparison.png" alt="3D Визуализация кластеров DBSCAN" style="max-width: 90%; max-height: 350px; border: 1px solid #ddd;">
+        <p class="explanation">Эта визуализация помогает увидеть, как DBSCAN группирует галактики в трехмерном пространстве. Для интерактивной 3D-визуализации откройте файл <a href="Презентация & Требуемое оформление/dbscan_clusters_3d.html" target="_blank">dbscan_clusters_3d.html</a></p>
+    </div>
+</body>
+</html> 
